@@ -1,0 +1,10 @@
+C:\Users\tinhl\Desktop\BanVotMVC\BanVotMVC\Common\bin\Release\Common.dll
+C:\Users\tinhl\Desktop\BanVotMVC\BanVotMVC\Common\bin\Release\Common.pdb
+C:\Users\tinhl\Desktop\BanVotMVC\BanVotMVC\Common\bin\Release\Microsoft.Analytics.Interfaces.dll
+C:\Users\tinhl\Desktop\BanVotMVC\BanVotMVC\Common\bin\Release\Microsoft.Analytics.Interfaces.Streaming.dll
+C:\Users\tinhl\Desktop\BanVotMVC\BanVotMVC\Common\bin\Release\Microsoft.Analytics.Types.dll
+C:\Users\tinhl\Desktop\BanVotMVC\BanVotMVC\Common\obj\Release\Common.csprojAssemblyReference.cache
+C:\Users\tinhl\Desktop\BanVotMVC\BanVotMVC\Common\obj\Release\Common.csproj.CoreCompileInputs.cache
+C:\Users\tinhl\Desktop\BanVotMVC\BanVotMVC\Common\obj\Release\Common.csproj.CopyComplete
+C:\Users\tinhl\Desktop\BanVotMVC\BanVotMVC\Common\obj\Release\Common.dll
+C:\Users\tinhl\Desktop\BanVotMVC\BanVotMVC\Common\obj\Release\Common.pdb

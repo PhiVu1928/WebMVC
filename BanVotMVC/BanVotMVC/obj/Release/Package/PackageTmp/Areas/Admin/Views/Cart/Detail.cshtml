@@ -1,0 +1,56 @@
+﻿@model List<Model.ViewModel.CartViewModel>
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section header{
+    Danh sách sản phẩm giỏ hàng
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">thông tin giỏ hàng</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table class="table table-bordered table-hover dataTable">
+                    <tr>
+                        <th>Hình ảnh</th>
+                        <th>Tên sản phảm</th>
+                        <th>Số lượng</th>
+                        <th>Đơn giá</th>
+                        <th>Tổng tiền</th>
+                        <th>#</th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                <tr id="row_@item.ID">
+                    <td>
+                        <img src="@item.Images" style="width:110px;height:100px" />
+                    </td>
+                    <td>@item.Name</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Price.Value.ToString("N0")</td>
+                    <td>@((item.Price * item.Quantity).Value.ToString("N0"))</td>
+                    <td>
+                        <a href="/Admin/Cart/Index/">Quay lại</a>
+                        |
+                        @Ajax.ActionLink("Xóa", "Delete", new { id = item.ID }, new AjaxOptions
+                   {
+                       Confirm = "Bạn có muốn xóa tin tức này ?",
+                       OnComplete = "$('row_" + @item.ID + "').remove()",
+                       HttpMethod = "Delete"
+                   })
+                    </td>
+                </tr>
+                    }
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,137 @@
+﻿@model Model.EF.Product
+@{
+    var Category = (Model.EF.ProductCategory)ViewBag.Category;
+    var Slider = (List<Model.EF.Slide>)ViewBag.Slider;
+    var ProductCategory = (List<Model.EF.ProductCategory>)ViewBag.ProductCategory;
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+@section Slider{
+    <div class="trending-area">
+        <div class="container">
+            <div class="trending-main">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12 col-xl-12">
+                        <div class="slider-active">
+                            @foreach (var slider in Slider)
+                            {
+                                <div class="single-slider">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-xl-6 col-lg-6">
+                                            <div class="detail-items">
+                                                <h1 data-animation="fadeInUp" data-delay=".2s" data-duration="1000ms">@slider.Name</h1>
+                                                <h3 data-animation="fadeInUp" data-delay=".4s" data-duration="1000ms">Giảm giá : @slider.Price.Value.ToString("N0") ₫ <i style="text-decoration: line-through;">@slider.PromotionPrice.Value.ToString("N0") ₫</i> </h3>
+                                                <div class="description-slider" data-animation="fadeInUp" data-delay=".6s" data-duration="1000ms">
+                                                    @Html.Raw(slider.Description)
+                                                </div>
+                                                <button type="button" data-animation="fadeInUp" data-delay=".6s" data-duration="1000ms" class="btn btn-default get">Đặt hàng ngay</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-xl-6 col-lg-6">
+                                            <div class="slider-img">
+                                                <img data-animation="fadeInUp" data-delay=".2s" data-duration="1000ms" src="@slider.Image" alt="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section LeftMenu{
+    <div class="col-md-3 col-lg-3 col-xl-3 d-none d-md-block">
+        <div class="left-sidebar">
+            <h2 class="title text-center">Danh mục</h2>
+        </div>
+        <div class="panel-group category-products">
+            <div class="panel-group category-products" id="accordian">
+                <!--category-productsr-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        @foreach (var item in ProductCategory.Where(x => x.ParentID == 1))
+                        {
+                            var url = "/san-pham/" + item.MetaTitle + "-" + item.ID;
+                            <h4 class="panel-title"><a href="@url">@item.Name</a></h4>
+                        }
+                    </div>
+                </div>
+            </div><!--/category-products-->
+            <div class="shipping text-center">
+                <!--shipping-->
+                <a href="#"><img src="~/Assets/Client/img/home/shipping.jpg" alt="" /></a>
+            </div><!--/shipping-->
+        </div>
+        <div class="left-sidebar">
+            <h2 class="title text-center">Sản phẩm khác</h2>
+        </div>
+        <div class="panel-group category-products">
+            <div class="panel-group category-products" id="accordian">
+                <!--category-productsr-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        @foreach (var item2 in ProductCategory.Where(x => x.ParentID == 2))
+                        {
+                            var url = "/san-pham/" + item2.MetaTitle + "-" + item2.ID;
+                            <h4 class="panel-title"><a href="@url">@item2.Name</a></h4>
+                        }
+                    </div>
+                </div>
+            </div><!--/category-products-->
+            <div class="shipping text-center">
+                <!--shipping-->
+                <a href="#"><img src="~/Assets/Client/img/home/shipping.jpg" alt="" /></a>
+            </div><!--/shipping-->
+        </div>
+    </div>
+}
+@{
+    var urlcart = "/them-gio-hang/" + Model.ID + "-" + 1;
+}
+<div class="col-md-9 col-lg-9 col-xl-9">
+    <div class="shop-item-detail">
+        <div class="detail-items-text">
+            <!--features_items-->
+            <h2 class="title text-center">Chi tiết</h2>
+        </div><!--features_items-->
+        <div class="row">
+            <div class="col-lg-4 col-sm-4 col-md-4">
+                <div class="product-detail-img">
+                    <img src="@Model.Image">
+                </div>
+            </div>
+            <div class="col-lg-8 col-sm-8 col-md-8">
+                <div class="product-detail-info">
+                    <h2>@Model.Name</h2>
+                    <p>Mã sản phẩm: @Model.Code</p>
+                    <span>
+                        <span>Giá: @Model.Price.Value.ToString("N0")đ</span>
+                        <a class="btn btn-default cart" href="@urlcart"><i class="fa fa-shopping-cart"> </i> Thêm vào giỏ</a>
+                    </span>
+                    <p>Số lượng: @Model.Warranty</p>
+                    <p>Hãng SX: @Category.Name</p>
+                </div>
+            </div>
+        </div>
+        <div class="detail-item-decripsion">
+            <h2 class="title text-center detail">Chi tiết sản phẩm</h2>
+        </div>
+        <div class="tab-content">
+            <div class="tab-description" id="reviews">
+                <div class="col-sm-12">
+                    <ul><li><a><i class="fa flaticon-calendar" style="color: #f34141; padding-right: 5px    ;"></i>@Model.CreatedDate</a></li></ul>
+                </div>
+                <p>
+                    @Html.Raw(Model.Description)
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+

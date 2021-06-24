@@ -1,0 +1,83 @@
+﻿@model Model.EF.User
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+@section header {
+    Chỉnh sửa User
+}
+<div class="row">
+    <div class="col-md-6">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Sửa User</h3>
+            </div>
+            @using (Html.BeginForm("Edit", "User", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <form role="form">
+                    <div class="box-body">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "exampleInputEmail1" })
+                            @Html.TextBoxFor(model => model.UserName, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "exampleInputEmail1" })
+                            @Html.PasswordFor(model => model.Password, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.GroupID, htmlAttributes: new { @class = "exampleInputEmail1" })
+                            @Html.DropDownListFor(model => model.GroupID, null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "exampleInputEmail1" })
+                            @Html.TextBoxFor(model => model.Name, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "exampleInputEmail1" })
+                            @Html.TextBoxFor(model => model.Address, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "exampleInputEmail1" })
+                            @Html.TextBoxFor(model => model.Email, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "exampleInputEmail1" })
+                            @Html.TextBoxFor(model => model.Phone, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "exampleInputEmail1" })
+                            @Html.CheckBoxFor(model => model.Status, htmlAttributes: new { @class = "checkbox" })
+                            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="box-footer">
+                            <input type="submit" value="Xác Nhận" class="btn btn-primary" />
+                        </div>
+
+                    </div>
+                </form>
+            }
+        </div>
+    </div>
+</div>
+
+

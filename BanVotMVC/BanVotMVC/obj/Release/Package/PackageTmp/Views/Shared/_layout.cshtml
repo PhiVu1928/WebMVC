@@ -1,0 +1,93 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Bán Vợt </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Assets/Client/img/favicon.ico">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="~/Assets/Client/Style/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Assets/Client/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Assets/Client/css/flaticon.css">
+    <link rel="stylesheet" href="~/Assets/Client/css/slicknav.css">
+    <link rel="stylesheet" href="~/Assets/Client/css/animate.min.css">
+    <link rel="stylesheet" href="~/Assets/Client/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/Assets/Client/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/Assets/Client/css/themify-icons.css">
+    <link rel="stylesheet" href="~/Assets/Client/css/slick.css">
+    <link href="~/Assets/Client/css/jquery-ui.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Assets/Client/css/nice-select.css">
+    <link rel="stylesheet" href="~/Assets/Client/css/style.css" />
+    <link rel="stylesheet" href="~/Assets/Client/Style/main.css">
+
+</head>
+<body>
+    <header>
+        @{ Html.RenderAction("MenuHeader", "Home");}
+    </header>
+    <main>
+        @RenderSection("Slider", required: false)
+        <!-- Trending Area Start -->
+        <section class="whats-news-area pt-50 pb-20 ">
+            <div class="container">
+                <div class="row">
+                    @RenderSection("LeftMenu", required: false)
+                    @RenderBody()
+                </div>
+            </div>
+        </section>
+        <!-- Trending Area End -->
+    </main>
+    <footer>
+        @{ Html.RenderAction("Footer", "Home");}
+    </footer>
+    @{ Html.RenderAction("StickyCart", "Home");}
+    @{ Html.RenderAction("Search", "Home");}
+</body>
+</html>
+<!-- JS here -->
+
+<script src="~/Assets/Client/js/vendor/modernizr-3.5.0.min.js"></script>
+<!-- Jquery, Popper, Bootstrap -->
+<script src="~/Assets/Client/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="~/Assets/Client/js/popper.min.js"></script>
+<script src="~/Assets/Client/js/bootstrap.min.js"></script>
+<!-- Jquery Mobile Menu -->
+<script src="~/Assets/Client/js/jquery.slicknav.min.js"></script>
+
+<!-- Jquery Slick , Owl-Carousel Plugins -->
+<script src="~/Assets/Client/js/owl.carousel.min.js"></script>
+<script src="~/Assets/Client/js/slick.min.js"></script>
+<!-- Date Picker -->
+<script src="~/Assets/Client/js/gijgo.min.js"></script>
+<!-- One Page, Animated-HeadLin -->
+<script src="~/Assets/Client/js/wow.min.js"></script>
+<script src="~/Assets/Client/js/animated.headline.js"></script>
+<script src="~/Assets/Client/js/jquery.magnific-popup.js"></script>
+
+<!-- Scrollup, nice-select, sticky -->
+<script src="~/Assets/Client/js/jquery.scrollUp.min.js"></script>
+<script src="~/Assets/Client/js/jquery.nice-select.min.js"></script>
+<script src="~/Assets/Client/js/jquery.sticky.js"></script>
+
+<!-- contact js -->
+<script src="~/Assets/Client/js/contact.js"></script>
+<script src="~/Assets/Client/js/jquery.form.js"></script>
+<script src="~/Assets/Client/js/jquery.validate.min.js"></script>
+<script src="~/Assets/Client/js/mail-script.js"></script>
+<script src="~/Assets/Client/js/jquery.ajaxchimp.min.js"></script>
+
+<!-- Jquery Plugins, main Jquery -->
+<script src="~/Assets/Client/js/plugins.js"></script>
+<script src="~/Assets/Client/js/main.js"></script>
+<script src="~/Assets/Client/js/jquery-ui.js"></script>
+<script src="~/Assets/Client/js/Controller/baseController.js"></script>
+@RenderSection("JsFooter", required: false)

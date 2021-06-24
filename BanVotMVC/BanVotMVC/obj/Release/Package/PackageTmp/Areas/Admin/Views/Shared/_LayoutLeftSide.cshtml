@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewBag.Title = "_LayoutLeftSide";
+}
+
+
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- search form -->
+        
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">CHỨC NĂNG ADMIN</li>
+            <li class="active treeview">
+                <a href="#">
+                    <i class="fa fa-user-plus"></i> <span>Người dùng</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/Admin/User/Create"><i class="fa fa-circle-o"></i> Thêm người dùng</a></li>
+                    <li><a href="/Admin/User/Index"><i class="fa fa-circle-o"></i> Danh sách người dùng</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-book"></i> <span>Tin Tức</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/Admin/Content/Create"><i class="fa fa-circle-o"></i> Thêm tin tức</a></li>
+                    <li><a href="/Admin/Content/Index"><i class="fa fa-circle-o"></i> Danh sách tin tức</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-tumblr"></i><span>Sản phẩm</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/Admin/Product/Create"><i class="fa fa-circle-o"></i> Thêm sản phẩm</a></li>
+                    <li><a href="/Admin/Product/Index"><i class="fa fa-circle-o"></i> Danh sách sản phẩm</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i><span>Danh mục</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/Admin/Category/Create"><i class="fa fa-circle-o"></i> Thêm danh mục</a></li>
+                    <li><a href="/Admin/Category/CreateParent"><i class="fa fa-circle-o"></i> Thêm danh mục con</a></li>
+                    <li><a href="/Admin/Category/Index"><i class="fa fa-circle-o"></i> Danh sách danh mục</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-navicon"></i><span>Menu chính</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/Admin/Menu/Create"><i class="fa fa-circle-o"></i> Thêm menu chính</a></li>
+                    <li><a href="/Admin/Menu/Index"><i class="fa fa-circle-o"></i> Danh sách menu</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-tv"></i><span>Slide</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/Admin/Slide/Create"><i class="fa fa-circle-o"></i> Thêm slide</a></li>
+                    <li><a href="/Admin/Slide/Index"><i class="fa fa-circle-o"></i> Danh sách slide</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-tv"></i><span>Slide Partner</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/Admin/SlidePartner/Create"><i class="fa fa-circle-o"></i> Thêm hình ảnh hãng</a></li>
+                    <li><a href="/Admin/SlidePartner/Index"><i class="fa fa-circle-o"></i> Danh sách hãng</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-tumblr"></i><span>Giới Thiệu</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/Admin/About/Create"><i class="fa fa-circle-o"></i> Thêm giới thiệu</a></li>
+                    <li><a href="/Admin/About/Index"><i class="fa fa-circle-o"></i> Thông tin</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-cart-plus"></i><span>Giỏ hàng</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/Admin/Cart/Index"><i class="fa fa-circle-o"></i> Danh sách giỏ hàng</a></li>
+                </ul>
+            </li>
+
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>

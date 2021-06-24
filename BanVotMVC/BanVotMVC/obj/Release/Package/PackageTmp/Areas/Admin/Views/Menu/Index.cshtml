@@ -1,0 +1,68 @@
+﻿@model PagedList.IPagedList<Model.EF.Menu>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section header{
+    Danh sách menu
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Danh sách menu</h3>
+            </div>
+            <div class="col-md-6">
+                @using (Html.BeginForm("Index", "Menu", FormMethod.Get))
+                {
+                    <div class="box-body">
+                        <div class="input-group input-group-sm">
+                            <input type="text" value="@ViewBag.SearchString" name="SearchString" class="form-control" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-info btn-flat" type="submit">Tìm kiếm</button>
+                            </span>
+                        </div>
+                    </div>
+                }
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table class="table table-bordered table-hover dataTable">
+                    <tr>
+                        <th>Tên Menu</th>
+                        <th>Link</th>
+                        <th>#</th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr id="row_@item.ID">
+                            <td>@item.Text</td>
+                            <td>@item.Link</td>
+                            <td>
+                                <a href="/Admin/Menu/Edit/@item.ID">Sửa</a>
+                                |
+                                @Ajax.ActionLink("Xóa", "Delete", new { id = item.ID }, new AjaxOptions
+                           {
+                               Confirm = "Bạn có muốn xóa người dùng này ?",
+                               OnComplete = "$('row_" + @item.ID + "').remove()",
+                               HttpMethod = "Delete"
+                           })
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+                <ul class="pagination pagination-sm no-margin pull-right">
+                    @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page, @SearchString = @ViewBag.SearchString }))
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

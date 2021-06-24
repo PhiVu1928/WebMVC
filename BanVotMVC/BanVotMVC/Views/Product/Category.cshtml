@@ -1,0 +1,135 @@
+﻿@model PagedList.IPagedList<Model.EF.Product>
+@using PagedList.Mvc
+@{
+    var Slider = (List<Model.EF.Slide>)ViewBag.Slider;
+    var ProductCategoryID = (Model.EF.ProductCategory)ViewBag.ProductCategoryID;
+    var ProductCategory = (List<Model.EF.ProductCategory>)ViewBag.ProductCategory;
+    ViewBag.Title = "Category";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+@section Slider{
+    <div class="trending-area">
+        <div class="container">
+            <div class="trending-main">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12 col-xl-12">
+                        <div class="slider-active">
+                            @foreach (var slider in Slider)
+                            {
+                                <div class="single-slider">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-xl-6 col-lg-6">
+                                            <div class="detail-items">
+                                                <h1 data-animation="fadeInUp" data-delay=".2s" data-duration="1000ms">@slider.Name</h1>
+                                                <h3 data-animation="fadeInUp" data-delay=".4s" data-duration="1000ms">Giảm giá : @slider.Price.Value.ToString("N0") ₫ <i style="text-decoration: line-through;">@slider.PromotionPrice.Value.ToString("N0") ₫</i> </h3>
+                                                <div class="description-slider" data-animation="fadeInUp" data-delay=".6s" data-duration="1000ms">
+                                                    @Html.Raw(slider.Description)
+                                                </div>
+                                                <button type="button" data-animation="fadeInUp" data-delay=".6s" data-duration="1000ms" class="btn btn-default get">Đặt hàng ngay</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-xl-6 col-lg-6">
+                                            <div class="slider-img">
+                                                <img data-animation="fadeInUp" data-delay=".2s" data-duration="1000ms" src="@slider.Image" alt="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section LeftMenu{
+    <div class="col-md-3 col-lg-3 col-xl-3 d-none d-md-block">
+        <div class="left-sidebar">
+            <h2 class="title text-center">Danh mục</h2>
+        </div>
+        <div class="panel-group category-products">
+            <div class="panel-group category-products" id="accordian">
+                <!--category-productsr-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        @foreach (var item in ProductCategory.Where(x => x.ParentID == 1))
+                        {
+                            var url = "/san-pham/" + item.MetaTitle + "-" + item.ID;
+                            <h4 class="panel-title"><a href="@url">@item.Name</a></h4>
+                        }
+                    </div>
+                </div>
+            </div><!--/category-products-->
+            <div class="shipping text-center">
+                <!--shipping-->
+                <a href="#"><img src="~/Assets/Client/img/home/shipping.jpg" alt="" /></a>
+            </div><!--/shipping-->
+        </div>
+        <div class="left-sidebar">
+            <h2 class="title text-center">Sản phẩm khác</h2>
+        </div>
+        <div class="panel-group category-products">
+            <div class="panel-group category-products" id="accordian">
+                <!--category-productsr-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        @foreach (var item2 in ProductCategory.Where(x => x.ParentID == 2))
+                        {
+                            var url = "/san-pham/" + item2.MetaTitle + "-" + item2.ID;
+                            <h4 class="panel-title"><a href="@url">@item2.Name</a></h4>
+                        }
+                    </div>
+                </div>
+            </div><!--/category-products-->
+            <div class="shipping text-center">
+                <!--shipping-->
+                <a href="#"><img src="~/Assets/Client/img/home/shipping.jpg" alt="" /></a>
+            </div><!--/shipping-->
+        </div>
+    </div>
+}
+<div class="col-md-9 col-lg-9 col-xl-9">
+    <div class="category_items">
+        <!--features_items-->
+        <h2 class="title text-center"> @ProductCategoryID.Name </h2>
+        <div class="row align-items-center">
+            @foreach (var Item in Model)
+            {
+                var url = "/chi-tiet/" + Item.MetaTitle + "-" + Item.ID;
+                var urlcart = "/them-gio-hang/" + Item.ID + "-" + 1;
+                <div class="col-xl-4 col-lg-4 col-md-4">
+                    <div class="product-image-wrapper">
+                        <div class="single-products set-bg" data-setbg="@Item.Image" style="background-image: url(@Item.Image);">
+                            <span class="label">NEW</span>
+                        </div>
+                        <div class="productinfo text-center">
+                            <a href="@urlcart" class="add-to-cart">+ Thêm vào giỏ hàng</a>
+                            <a href="@url" class="add-to-cart"> | Xem chi tiết</a>
+                            <p style="text-transform: uppercase;">@Item.Name</p>
+                        </div>
+                        <div class="product-price text-center">
+                            <h2><i style="text-decoration: line-through;font-size: 10pt;">@Item.PromotionPrice.Value.ToString("N0")₫</i> @Item.Price.Value.ToString("N0")₫</h2>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="pagination-area  gray-bg pb-45">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="single-wrap">
+                                <ul class="pagination">
+                                    @Html.PagedListPager(Model, Page => Url.Action("Category"))
+                                </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--features_items-->
+</div>
+

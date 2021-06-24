@@ -1,0 +1,55 @@
+﻿@model List<BanVotMVC.Models.Cart>
+@{
+    ViewBag.Title = "Payment";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<div class="col-sm-12">
+    <h2 class="title text-center">Thanh toán</h2>
+</div>
+<section class="Cart-checkout">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-8">
+                <div class="cart-total">
+                    <h6 class="text-center">Thông tin khách hàng</h6>
+                </div>
+                <div class="cart-info">
+                    @using (Html.BeginForm("Payment", "Cart", FormMethod.Post))
+                    {
+                    <form id="customer-info">
+                        <input type="text" name="ShipName" placeholder="Tên khách hàng">
+                        <input type="text" name="ShipAddress" placeholder="Địa chỉ">
+                        <input type="text" name="ShipMobile" placeholder="Số điện thoại">
+                        <input type="text" name="ShipEmail" placeholder="Email">
+                        <input type="submit" class="cart-info primary-btn1" value="Thanh Toán" />
+                    </form>
+                    }
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <div class="checkout-order">
+                    <div class="order-name">
+                        <h4>Thông tin giỏ hàng</h4>
+                    </div>
+                    <div class="checkout-order-product">
+                        Tên sản phẩm <span>Đơn giá</span>
+                    </div>
+                    <ul class="checkout-total-product">
+                        @foreach(var item in Model)
+                        { 
+                        <li>@item.Product.Name<span>@item.Product.Price.Value.ToString("N0")đ</span></li>
+                        }
+                    </ul>
+                    <div class="cart-total">
+                        <ul>
+                            <li>Số lượng sản phẩm: <span>@Model.Count</span></li>
+                            <li>Tổng tiền: <span>@(Model.Sum(x=>x.Product.Price * x.Quantity).Value.ToString("N0")) đ</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,116 @@
+﻿@model Model.EF.Slide
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section header{
+    Thêm slide
+}
+@section jsFooter{
+    <script>
+
+        $('#btnSelectImage').on('click', function (e) {
+            e.preventDefault();
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (url) {
+                $('#txtImage').val(url);
+            };
+            finder.popup();
+        })
+        $('#btnSelectMoreImage').on('click', function (f) {
+            f.preventDefault();
+            var finder1 = new CKFinder();
+            finder1.selectActionFunction = function (url1) {
+                $('#txtMoreImage').val(url1);
+            };
+            finder1.popup();
+        })
+        var editor = CKEDITOR.replace('txtDescription');
+    </script>
+}
+<div class="row">
+    <div class="col-md-6">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Thêm slide</h3>
+            </div>
+            @using (Html.BeginForm("Create", "Slide", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <form role="form">
+                    <div class="box-body">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "exampleInputEmail1" })
+                            @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.DisplayOrder, htmlAttributes: new { @class = "exampleInputEmail1" })
+                            @Html.TextBoxFor(model => model.DisplayOrder, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.DisplayOrder, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "exampleInputEmail1" })
+                            @Html.TextBoxFor(model => model.Image, new { @class = "form-control", @id = "txtImage" })
+                            <a id="btnSelectImage">Chọn ảnh</a>
+                            @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.MoreImage, htmlAttributes: new { @class = "exampleInputEmail1" })
+                            @Html.TextBoxFor(model => model.MoreImage, new { @class = "form-control", @id = "txtMoreImage" })
+                            <a id="btnSelectMoreImage">Chọn ảnh</a>
+                            @Html.ValidationMessageFor(model => model.MoreImage, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "exampleInputEmail1" })
+                            @Html.TextBoxFor(model => model.Price, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PromotionPrice, htmlAttributes: new { @class = "exampleInputEmail1" })
+                            @Html.TextBoxFor(model => model.PromotionPrice, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.PromotionPrice, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "exampleInputEmail1" })
+                            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @id = "txtDescription" })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Link, htmlAttributes: new { @class = "exampleInputEmail1" })
+                            @Html.TextBoxFor(model => model.Link, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Link, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "exampleInputEmail1" })
+                            @Html.CheckBoxFor(model => model.Status, new { @class = "checkbox" })
+                            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="xác nhận" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            }
+        </div>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
